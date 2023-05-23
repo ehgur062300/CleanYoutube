@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>댓글 분석 테스트.Ver 1</title>
+</head>
+<body>
+{% if negative_word_list %}
+    {% for content in negative_word_list %}
+        <hr>
+        <h3>{{ content.negative_word }}</h3>
+    {% endfor %}
+{% else %}
+    <p>content 가 없습니다.</p>
+{% endif %}
+</body>
+</html>

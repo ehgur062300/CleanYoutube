@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% if comments %}
+<!--        {% if thumbnail %}-->
+<!--            <input type="image" src={{thumbnail}} alt="Submit" height="220">-->
+<!--        {% else %}-->
+<!--            <p>섬네일이 없습니당</p>-->
+<!--        {% endif %}-->
+        <hr>
+        {% for values in comments %}
+            <div>
+                <small>[{{values.1}}]</small> <!--1은 닉네임-->
+                <br>
+                <small>{{values.0}}</small><!--0은 댓글--><small>[❤ {{values.3}}]</small><!--3은 좋아요-->
+                <br>
+                <small>{{values.2}}</small><!--2는 시간-->
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>업로드된 영상이 없습니다.</p>
+    {% endif %}
+{% endblock %}
