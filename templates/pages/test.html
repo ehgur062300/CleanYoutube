@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% if result_dict %}
+        <div class="row">
+            {% for key, value in result_dict.items %}
+                <div class="video-column">
+                    <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'comments_view' %}">
+                        {% csrf_token %}
+                        <div class="video">
+                            <figure>
+                                <div class="Thumbnail">
+                                    <!--thumbnail-->
+                                    <input type="hidden" id="myValue1" name="video_id" value={{value.0}}>
+                                    <input type="hidden" id="myValue2" name="video_thumbnail" value={{value.1}}>
+                                    <input type="hidden" id="myValue3" name="video_title" value={{value.2}}>
+                                    <input type="image" src={{value.1}} alt="Submit" height="220">
+                                </div>
+                                <br>
+                                <!--title-->
+                                <p class="video_name"><small>{{value.2}}</small></p>
+                            </figure>
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>업로드된 영상이 없습니다.</p>
+    {% endif %}
+{% endblock %}

@@ -777,6 +777,31 @@ progress {
   --bs-breakpoint-xl: 1200px;
   --bs-breakpoint-xxl: 1400px;
 }
+.video-column {
+  width: 25%;
+  float: left;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.Thumbnail{
+  justify-content: center;
+  position: relative;
+  left: 22px;
+  top: 50px;
+  width: 320px;
+  height: 180px;
+  margin: 10px;
+}
+.video_name {
+  position: relative;
+  left: 30px;
+  top: 60px;
+}
+.video_comment {
+  position: relative;
+  left: 30px;
+  top: 30px;
+}
 
 .row {
   --bs-gutter-x: 1.5rem;

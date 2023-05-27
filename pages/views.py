@@ -15,7 +15,8 @@ def process_input(request):
         input_value = request.POST.get('input_value')
         result = youtube_api(input_value)
         result_dict = dict(result)
-        return render(request, 'pages/filtering_youtube.html', {'result_dict': result_dict})
+        #return render(request, 'pages/filtering_youtube.html', {'result_dict': result_dict})
+        return render(request, 'pages/test.html', {'result_dict': result_dict})
     else:
         return render(request, 'pages/index.html')
 

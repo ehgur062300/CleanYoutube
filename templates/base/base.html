@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="ko">
     <head>
       <meta charset="utf-8" />
@@ -12,8 +12,35 @@
       <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
       <!-- Core theme CSS (includes Bootstrap)-->
       {% block css %}
-      <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"> <!--스태틱 파일 불러오기가 안됨-->
       <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+          <style>
+              .video-column {
+                  width: 25%;
+                  float: left;
+                  box-sizing: border-box;
+                  padding: 10px;
+                }
+                .Thumbnail{
+                  justify-content: center;
+                  position: relative;
+                  left: 22px;
+                  top: 50px;
+                  width: 320px;
+                  height: 180px;
+                  margin: 10px;
+                }
+                .video_name {
+                  position: relative;
+                  left: 30px;
+                  top: 60px;
+                }
+                .video_comment {
+                  position: relative;
+                  left: 30px;
+                  top: 30px;
+                }
+          </style>
       {% endblock css %}
     </head>
     <body>

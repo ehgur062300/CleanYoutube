@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,13 +77,17 @@ WSGI_APPLICATION = 'my_project.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': '캡스톤 웹 서버',
+    #     'USER': 'ehgur062300',
+    #     'PASSWORD' : 'St4vStA2fvjDgSNAcctp',
+    #     'HOST' : 'database-1.cvwutdxwqb99.ap-northeast-2.rds.amazonaws.com',
+    #     'PORT' : '3306',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': '캡스톤 웹 서버',
-        'USER': 'ehgur062300',
-        'PASSWORD' : 'St4vStA2fvjDgSNAcctp',
-        'HOST' : 'database-1.cvwutdxwqb99.ap-northeast-2.rds.amazonaws.com',
-        'PORT' : '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -122,6 +127,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
