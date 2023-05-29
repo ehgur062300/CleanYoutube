@@ -77,18 +77,18 @@ WSGI_APPLICATION = 'my_project.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': '캡스톤 웹 서버',
-    #     'USER': 'ehgur062300',
-    #     'PASSWORD' : 'St4vStA2fvjDgSNAcctp',
-    #     'HOST' : 'database-1.cvwutdxwqb99.ap-northeast-2.rds.amazonaws.com',
-    #     'PORT' : '3306',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '캡스톤 웹 서버',
+        'USER': 'ehgur062300',
+        'PASSWORD' : 'St4vStA2fvjDgSNAcctp',
+        'HOST' : 'database-1.cvwutdxwqb99.ap-northeast-2.rds.amazonaws.com',
+        'PORT' : '3306',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 
