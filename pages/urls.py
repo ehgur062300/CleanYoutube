@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.index),
     path('search', views.process_input, name='process_input'),
     path('comments', views.comments_view, name='comments_view'),
+    path('bad_comments', views.bad_comments_view, name='bad_comments_view'),
 ]
