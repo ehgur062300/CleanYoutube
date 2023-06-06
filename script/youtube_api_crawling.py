@@ -25,16 +25,6 @@ def file(target):
         with open("static/filter.txt", 'a', encoding='utf-8') as f:
             f.write(target.lower() + '\n')
 
-def DEVELOPER_KEY():
-    DEVELOPER_KEY = 'AIzaSyDH9JUxoNhQl5EIsBgn00FPYPhYP9IIEc4'
-    YOUTUBE_API_SERVICE_NAME = 'youtube'
-    YOUTUBE_API_VERSION = 'v3'
-
-    # 채널 id 가져오기
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
-
-    return youtube
-
 def profile(youtuber):
     youtube = DEVELOPER_KEY()
     search_response = youtube.search().list(
