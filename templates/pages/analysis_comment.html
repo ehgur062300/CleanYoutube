@@ -1,22 +1,60 @@
 {% extends 'base/base.html' %}
 {% block content %}
-    {% if comments %}
-<!--        {% if thumbnail %}-->
-<!--            <input type="image" src={{thumbnail}} alt="Submit" height="220">-->
-<!--        {% else %}-->
-<!--            <p>섬네일이 없습니당</p>-->
-<!--        {% endif %}-->
-        <hr>
-        {% for values in comments %}
-            <div>
-                <small>[{{values.1}}]</small> <!--1은 닉네임-->
-                <br>
-                <small>{{values.0}}</small><!--0은 댓글--><small>[❤ {{values.3}}]</small><!--3은 좋아요-->
-                <br>
-                <small>{{values.2}}</small><!--2는 시간-->
-                <hr>
+    {% include 'base/navbar.html' %}
+    {% if video_info %}
+        {% for key, info in video_info.items %}
+            <!-- 썸네일 바 -->
+            <div class="Thumbnail_bar">
+                <img class="Thumbnail_image" src={{info.3}}>
+                <div style="width: 70%">
+                    <p class="vedio_name">{{info.1}}</p>
+                    <p class="vedio_views"><small>조회수: {{info.4}} </small></p>
+                    <p class="vedio_views"><small>좋아요 수: {{info.0}}</small></p>
+                </div>
             </div>
+             <div class="bad">
+                <p class="comment_count">전체 댓글수: {{ info.2 }}</p>
+                <form  method="post" action="{% url 'bad_comments_view' %}">
+                    {% csrf_token %}
+                    <input class="bad_bad" name="transform_comment" type="submit">
+                    <button class="bad_comment">악플읽기</button>
+                </form>
+             </div>
         {% endfor %}
+    {% else %}
+        <p>영상을 찾지 못하겠습니다.</p>
+    {% endif %}
+    {% if comments %}
+        <div class="full">
+            <div class="left_comment">
+            {% for values in comments %}
+                <!-- 댓글 -->
+                <div class="comment_box">
+                    <b><p class="idname">[{{values.1}}]</p></b>
+
+                    <p class="real_comment">{{values.0}}</p>
+                    <i class="fa-regular fa-thumbs-up" style="color: #ff3333; font-size: 20px;"></i>{{ values.3 }}
+                    | {{ values.2 }}
+                </div>
+            {% endfor %}
+            </div>
+            <div class="right_comment">
+                <div class="bad_rank ">
+                    <p class="key">자주 언급된 키워드</p>
+                    {% if keyword %}
+                        <ol>
+                        {% for key, word in keyword.items %}
+                            {% if forloop.counter <= 5 %}
+                                <li>{{ key }} - {{ word }}번</li>
+                            {% else %}
+                            {% endif %}
+                        {% endfor %}
+                        </ol>
+                    {% endif %}
+                 </div>
+            </div>
+        </div>
+
     {% else %}
         <p>업로드된 영상이 없습니다.</p>
     {% endif %}
