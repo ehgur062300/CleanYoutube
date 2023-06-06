@@ -1,37 +1,40 @@
 {% extends 'base/base.html' %}
 {% block content %}
-    {% if result_dict %}
-        {% for key, value in result_dict.items %}
-            <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'comments_view' %}">
-                {% csrf_token %}
-                <figure>
-                    <!--thumbnail-->
-                    <input type="hidden" id="myValue1" name="video_id" value={{value.0}}>
-                    <input type="hidden" id="myValue2" name="video_thumbnail" value={{value.1}}>
-                    <input type="hidden" id="myValue3" name="video_title" value={{value.2}}>
-                    <input type="image" src={{value.1}} alt="Submit" height="220">
-                    <br>
-                    <!--title-->
-                    <figcaption style="display: inline-block;">{{value.2}}</figcaption>
-                </figure>
-            </form>
+    {% include 'base/navbar.html' %}
+    {% if result_profile_dict %}
+        {% for key, value in result_profile_dict.items %}
+            <!-- 유튜버 프로필  -->
+            <div class="Profile">
+                <img class="Profile_image" src={{value.0}}>
+                <p class="channel_name">{{value.1}}</p>
+                <small class="subscriber">구독자: {{value.2}}</small>
+                <p class="profile_video">동영상: {{value.3}}</p>
+            </div>
         {% endfor %}
+    {% else %}
+        <p>검색한 채널이 없습니다.</p>
+    {% endif %}
+    {% if result_video_dict %}
+        <div class="row">
+            {% for key, value in result_video_dict.items %}
+                <div class="video-column">
+                    <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'comments_view' %}">
+                        {% csrf_token %}
+                        <div class="video">
+                            <div class="Thumbnail">
+                                <!--thumbnail-->
+                                <input type="hidden" id="myValue1" name="video_id" value="{{value.0}}">
+                                <input class="input_video" type="image" src="{{value.1}}" alt="Submit">
+                            </div>
+                            <br>
+                            <!--title-->
+                            <small class="video_name"><b>{{value.2}}</b></small>
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
     {% else %}
         <p>업로드된 영상이 없습니다.</p>
     {% endif %}
 {% endblock %}
-
-<style>
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-}
-
-.grid-item {
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
-  padding: 10px;
-}
-</style>
