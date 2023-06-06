@@ -1,60 +1,33 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
     <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <meta name="description" content="{% block metadescription %}{% endblock %}" />
-      <meta name="author" content="" />
-      <title>Mysite</title>
-      <title>{% block title %}{% endblock %}</title>
-      <!-- Favicon-->
-      <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-      <!-- Core theme CSS (includes Bootstrap)-->
-      {% block css %}
-      <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"> <!--스태틱 파일 불러오기가 안됨-->
-      <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
-          <style>
-              .video-column {
-                  width: 25%;
-                  float: left;
-                  box-sizing: border-box;
-                  padding: 10px;
-                }
-                .Thumbnail{
-                  justify-content: center;
-                  position: relative;
-                  left: 22px;
-                  top: 50px;
-                  width: 320px;
-                  height: 180px;
-                  margin: 10px;
-                }
-                .video_name {
-                  position: relative;
-                  left: 30px;
-                  top: 60px;
-                }
-                .video_comment {
-                  position: relative;
-                  left: 30px;
-                  top: 30px;
-                }
-          </style>
-      {% endblock css %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <meta name="description" content="{% block metadescription %}{% endblock %}" />
+        <meta name="author" content="" />
+        <title>Mysite</title>
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        {% block css %}
+            <link rel="stylesheet" type="text/css" href="../../{% static 'CSS.css' %}"> <!--스태틱 파일 불러오기가 안됨-->
+        {% endblock css %}
+
     </head>
-    <body>
-    {% include 'base/navbar.html' %}
-        <div>
-            <main>
+    <body style="margin: 0;">
+        <main>
             {% block content %}
             {% endblock content %}
-            </main>
-            <div style="">
-                {% include 'base/footer.html' %}
-            </div>
+        </main>
+        <div style="">
+            {% include 'base/footer.html' %}
         </div>
     </body>
+    <script src="https://kit.fontawesome.com/d338367aed.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </html>
